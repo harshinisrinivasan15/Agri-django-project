@@ -23,11 +23,11 @@ Uses OpenAI API to explain diseases in simple language Suggest preventive measur
 - Version Control: Git & GitHub
 ## 📊 Data Sources
 
-Custom-built Crop Dataset
+[Custom-built Crop Recommendation Dataset](ml/data/Crop_recommendation.csv)
 
-Custom-built Fertilizer Dataset
+Custom-built Fertilizer Recommendation Dataset
 
-Plant Disease Image Dataset
+Paddy Disease Image Dataset
 ## 🔐 Security
 API keys secured using .env
 
