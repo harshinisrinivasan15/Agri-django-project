@@ -27,7 +27,7 @@ Uses OpenAI API to explain diseases in simple language Suggest preventive measur
 
 [Custom-built Fertilizer Recommendation Dataset](ml/data/fertilizer.csv)
 
-Paddy Disease Image Dataset
+[Paddy Disease Image Dataset](https://www.kaggle.com/competitions/paddy-disease-classification/data)
 ## 🔐 Security
 API keys secured using .env
 
@@ -79,4 +79,4 @@ The predictions should not be used for real-world farming decisions without veri
 Harshini Srinivasan
 
 ## Contact 📞
-If you have any doubt or want to contribute feel free to email me or hit me up on LinkedIn
+If you have any doubt or want to contribute feel free to email me or hit me up on [LinkedIn](https://www.linkedin.com/in/harshini-srinivasan-7a1981372/)
