@@ -1,4 +1,4 @@
-🌾 AGRICART AI 🌿
+#🌾 AGRICART AI 🌿
 AI-Powered Smart Agriculture Web Platform (ML + DL + LLM)
 
 A full-stack AI-based web application that helps farmers make smarter decisions using:
@@ -9,7 +9,7 @@ A full-stack AI-based web application that helps farmers make smarter decisions 
 
 🤖 Large Language Model – OpenAI (AI-based explanations & suggestions)
 
-🚀 Features
+##🚀 Features
 🌾 Crop Recommendation System
 
 Predicts the best crop based on soil nutrients (N-P-K values), temperature & humidity.
