@@ -1,0 +1,221 @@
+{% extends 'agricart/layouts/main.html' %}
+{% load static %}
+{% block content %}
+{% include 'agricart/inc/slider.html' %}
+
+<div class="parent1">
+    <div class="text-section">
+      <h2>The Future of Farming</h2>
+      <p>
+       This platform helps farmers and agricultural enthusiasts make data-driven decisions by analyzing your field’s data.Provides personalized crop recommendations tailored to your land.<br><br>
+       Aims to empower farmers with modern technology, bridging the gap between traditional farming and smart agriculture. Our system is easy to use, accurate, and designed to save both time and resources while improving crop performance.
+      </p>
+    </div>
+    <div class="image-section">
+      <img src="{% static 'images/5.png' %}" alt="People gardening together">
+    </div>
+</div>
+
+<div class="letter" id="services"><h1>Our Services</h1></div>
+<div class="parent2">
+    <a href="{% url 'cropguide' %}">
+    <div class="child1 crop">
+        <i class="fa-solid fa-leaf" style="color:#28A745; font-size:60px;"></i>
+        <h3>Predict Crop</h3>
+        <p>Enter your field’s soil data, pH, and climate details, and get personalized recommendations on the most suitable crops to cultivate for maximum yield and profit.</p>
+
+    </div>
+    </a>
+
+    <a href="{% url 'disease' %}">
+    <div class="child1 disease">
+        <i class="fa-solid fa-bug" style="color:#FF6B6B; font-size:60px;"></i>
+        <h3>Identify Disease</h3>
+        <p>Upload images of your crops and instantly identify potential diseases. Get actionable advice on treatment and prevention to keep your plants healthy and productive.</p>
+    </div>
+    </a>
+
+    <a href="{% url 'fertilizer' %}">
+    <div class="child1 chatbot">
+         <i class="fa-solid fa-seedling" style="color:#1E90FF; font-size:58px;"></i>
+        <h3>Fertilizer</h3>
+        <p>Enter the crop and see the most suitable fertilizer to cultivate, which play a vital role in enhancing crop productivity by supplying essential nutrients N,P,K.</p>
+    </div>
+    </a>
+</div>
+
+<div class="parent3">
+    <div class="video-section">
+      <a href="https://youtu.be/JeU_EYFH1Jk?feature=shared" >
+      <img src={% static 'images/6.jpg' %} alt="Play Video">
+      </a>
+      <span class="play-icon">▶</span>
+    </div>
+
+    <div class="text-section">
+      <p>
+       India has used traditional methods of agriculture for generations, but with 1.4 billion people now dependant on the crops farmers produce, some are turning to technology to boost productivity and profit.<br><br>
+ 
+       For example on one vineyard, sensor devices are being used to check weather and soil health.<br><br>
+ 
+       Artificial intelligence (AI) can then figure out when it's time to water the crops, add fertiliser and tackle pests.<br><br>
+ 
+       Nitin Patil, who works at the vineyard, says the AI advice has helped "save 50% of the water" the farm had been using previously.<br><br>
+      </p>
+    </div>
+</div>
+
+<!-- Floating chatbot Button -->
+<div id="chat-toggle">
+    <i class="fa fa-comment"></i>
+</div>
+
+<!-- Chat Window -->
+<div id="chat-box">
+    <div id="chat-header">
+        <div class="avatar">🤖</div>
+        <div>
+            <strong>Agribot Assistant</strong>
+            <p>Hi! How can I help you?</p>
+        </div>
+    </div>
+
+    <div id="chat-body"></div>
+
+    <div id="chat-input">
+        <input type="text" id="user-msg" placeholder="Ask about crops...">
+        <button onclick="sendMsg()">Send</button>
+    </div>
+</div>
+
+
+<style>
+#chat-toggle{
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: linear-gradient(135deg,#6a11cb,#2575fc);
+  color: #fff;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  cursor:pointer;
+  z-index:9999;
+}
+
+#chat-box{
+  display:none;
+  position: fixed;
+  bottom:90px;
+  right:25px;
+  width:320px;
+  height:420px;
+  background:#fff;
+  border-radius:15px;
+  box-shadow:0 0 25px rgba(0,0,0,0.3);
+  overflow:hidden;
+  z-index:9999;
+}
+
+#chat-header{
+  background:linear-gradient(135deg,#6a11cb,#2575fc);
+  color:white;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+#chat-header p{
+  margin:0;
+  font-size:12px;
+  opacity:.9;
+}
+
+#chat-body{
+  height:290px;
+  padding:10px;
+  overflow-y:auto;
+  background:#f4f6fb;
+  display:flex;
+  flex-direction:column;
+}
+
+.msg-user{
+  background:#d1e7ff;
+  padding:8px 12px;
+  border-radius:15px;
+  margin:5px 0;
+  align-self:flex-end;
+  max-width:70%;
+  word-wrap: break-word;
+}
+
+.msg-bot{
+  background: #e2e8f3;
+  padding:8px 12px;
+  border-radius:15px;
+  margin:5px 0;
+  max-width:70%;
+  align-self:flex-start;
+  word-wrap:break-word;
+}
+
+#chat-input{
+  display:flex;
+  border-top:1px solid #ccc;
+}
+
+#chat-input input{
+  flex:1;
+  border:none;
+  padding:10px;
+}
+
+#chat-input button{
+  background:#2575fc;
+  color:white;
+  border:none;
+  padding:10px 14px;
+}
+
+</style>
+
+<script>
+document.getElementById("chat-toggle").onclick = () =>{
+  let box = document.getElementById("chat-box");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+function sendMsg(){
+  let input = document.getElementById("user-msg");
+  let msg = input.value;
+  if(msg=="") return;
+
+  let body = document.getElementById("chat-body");
+  body.innerHTML += `<div class="msg-user">${msg}</div>`;
+
+  fetch("/chat/",{
+    method:"POST",
+    headers:{
+      "X-CSRFToken":"{{ csrf_token }}"
+    },
+    body:new URLSearchParams({message:msg})
+  })
+  .then(res=>res.json())
+  .then(data=>{
+    body.innerHTML += `<div class="msg-bot">${data.reply}</div>`;
+    body.scrollTop = body.scrollHeight;
+  });
+
+  input.value="";
+}
+</script>
+
+
+
+{% endblock content %}

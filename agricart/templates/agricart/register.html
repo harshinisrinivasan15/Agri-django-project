@@ -1,0 +1,121 @@
+{% extends 'agricart/layouts/main.html' %}
+{% block content %}
+
+<style>
+body {
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+.cont {
+  margin-bottom: 70px; /* Adds space before footer */
+}
+
+h4 {
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+label {
+  color: #e0e0e0;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form-control::placeholder {
+  color: #ddd;
+}
+
+.btn-small {
+  width: 40%;
+  padding: 8px 0;
+  background-color: #00c6ff;
+  background-image: linear-gradient(45deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-small:hover {
+  background-image: linear-gradient(45deg, #0072ff, #00c6ff);
+  transform: translateY(-2px);
+}
+</style>
+
+<div class="cont" style="margin-top:70px;min-height:600px;">
+    <div class="row">
+        <div class="col-12">
+            <h4>Register Here</h4>
+            <hr style="border-color: #b8bfc2;">   
+             {% include 'agricart/inc/message.html' %}         
+        </div>   
+    </div>
+    
+    <section class="py-4 my-0.1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 text-center">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="mb-4 text-start">
+                            <label for="" class="form-label">Name</label>
+                             {{form.username}}
+                             
+                        </div>
+                         <div class="mb-4 text-start">
+                             <label for="" class="form-label">Email</label>
+                             {{form.email}}
+                             
+                        </div>
+                         <div class="mb-4 text-start">
+                            <label for="" class="form-label" >Password</label>
+                             {{form.password1}}
+                             
+                        </div>
+                         <div class="mb-4 text-start">
+                            <label for="" class="form-label">Confirm Password</label>
+                             {{form.password2}}
+                             
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-small mt-3">Sign in</button>
+                    </form>
+                    <p class="mt-3 text-center">Already user ?<a href="{% url 'login' %}"> Login Now</a></p>
+                </div>
+
+
+                 <div class="col-6">
+                             
+                             {% if form.errors.username %}
+                             <label class="tect-danger">{{ form.errors.username }}</label>
+                             {% endif %}
+                       
+                             {% if form.errors.email %}
+                             <label class="tect-danger">{{ form.errors.email }}</label>
+                             {% endif %}
+                       
+                             {% if form.errors.password1 %}
+                             <label class="tect-danger">{{ form.errors.password1 }}</label>
+                             {% endif %}
+                       
+                             {% if form.errors.password2 %}
+                             <label class="tect-danger">{{ form.errors.password2 }}</label>
+                             {% endif %}
+                 </div>
+            </div>
+        </div>
+    </section>
+  </div>
+{% endblock content %}

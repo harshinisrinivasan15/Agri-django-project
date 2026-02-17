@@ -1,0 +1,140 @@
+{% extends 'agricart/layouts/main.html' %}
+{% block content %}
+
+<style>
+body {
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+.cont {
+  margin-bottom: 80px; /* Adds space before footer */
+}
+
+h4 {
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+label {
+  color: #e0e0e0;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form-control::placeholder {
+  color: #ddd;
+}
+
+.btn-small {
+  width: 40%;
+  padding: 8px 0;
+  background-color: #00c6ff;
+  background-image: linear-gradient(45deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  margin-left: 79%;
+}
+
+.btn-small:hover {
+  background-image: linear-gradient(45deg, #0072ff, #00c6ff);
+  transform: translateY(-2px);
+}
+</style>
+
+<div class="cont" style="margin-top:70px;min-height:700px;">
+    <div class="row">
+        <div class="col-12">
+            <h4>Crop Guide</h4>
+            <hr style="border-color: #b8bfc2;">  
+            {% include 'agricart/inc/message.html' %}        
+        </div>   
+    </div>
+
+    
+    <section class="py-4 my-0.1">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                     <form method="POST" action="">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label style="margin-left: 50%;">Nitrogen</label>
+                        <input type="number" name="nitrogen" class="form-control" required min="0" required style="margin-left: 50%;">
+                      </div>
+                      <div class="form-group">
+                        <label style="margin-left: 50%;">Phosphorous</label>
+                        <input type="number" name="phosphorous" class="form-control" required min="5" required style="margin-left: 50%;">
+                      </div>
+                      <div class="form-group">
+                        <label  style="margin-left: 50%;">Potassium</label>
+                        <input type="number" name="potassium" class="form-control" required min="5" required  style="margin-left: 50%;">
+                      </div>
+                      <div class="form-group">
+                        <label  style="margin-left: 50%;">pH Level</label>
+                        <input type="number" step="0.1" name="ph" class="form-control" required min="3" required  style="margin-left: 50%;">
+                      </div>
+                      <div class="form-group">
+                        <label  style="margin-left: 50%;">Rainfall (mm)</label>
+                        <input type="number" step="0.1" name="rainfall" class="form-control" required min="20" required  style="margin-left: 50%;">
+                      </div>
+              
+                      <div class="form-group">
+                        <label  style="margin-left: 50%;">City</label>
+                        <input type="text" id="city" name="city" class="form-control" list="cityList" required  style="margin-left: 50%;" autocomplete="off">
+                        <datalist id="cityList"></datalist>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-small mt-3">Predict</button>
+                     </form>
+                 </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+  // ✅ Only your cities are available
+  const cities = [
+    "Thanjavur","Kumbakonam", "Pattukkottai", "Adudurai", "Ammapettai", "Ayyampettai", "Madukkur",
+    "Melathirupanthuruthi", "Meladoor", "Nanjikottai", "Orathanadu", "Papanasam",
+    "Peravurani", "Perumahaloor", "Sozhapuram", "Swamimalai", "Tharasuram",
+    "Thirukattupalli", "Thirunageswaram", "Thirupanandhal", "Thiruvuaiyaru",
+    "Thiruvidaimarudur", "Vallam", "Veppathur"
+  ];
+
+  const datalist = document.getElementById("cityList");
+  datalist.innerHTML = ""; // ✅ Clear anything that might remain
+
+  // ✅ Add only your options
+  cities.forEach(city => {
+    const option = document.createElement("option");
+    option.value = city;
+    datalist.appendChild(option);
+  });
+</script>
+ 
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,292 @@
+{% extends 'agricart/layouts/main.html' %}
+{% block content %}
+
+<div class="container-fluid result-bg">
+    <div class="result-card">
+
+        <!-- Uploaded Image -->
+        <img src="{{ image_url }}" alt="Crop Image" class="result-img">
+
+        <!-- Prediction -->
+        <h1 class="disease-name">{{ disease }}</h1>
+        <b><p class="confidence">Prediction Confidence: {{ confidence }}%</p></b>
+
+        <!-- Disease Content -->
+        <div class="disease-content">
+
+            {% if disease == "Brownspot" %}
+                <h3>🟤 Brown Spot Disease</h3>
+
+                <h4><b>Cause</b></h4>
+                <p>
+                    Caused by the fungus <b>Bipolaris oryzae</b>.  
+                    It develops in nutrient-deficient soils and humid conditions.
+                </p>
+
+                <h4><b>Symptoms</b></h4>
+                <ul>
+                    <li>Small brown circular spots on leaves</li>
+                    <li>Yellow halo around spots</li>
+                    <li>Reduced grain quality</li>
+                </ul>
+
+                <h4><b>Treatment / Cure</b></h4>
+                <ul>
+                    <li>Spray fungicides like <b>Mancozeb</b> or <b>Carbendazim</b></li>
+                    <li>Apply balanced fertilizers (NPK)</li>
+                </ul>
+
+                <h4><b>Prevention</b></h4>
+                <ul>
+                    <li>Use disease-resistant varieties</li>
+                    <li>Avoid nutrient deficiency</li>
+                    <li>Ensure proper drainage</li>
+                </ul>
+
+            {% elif disease == "Blast" %}
+                <h3>🟤 Rice Blast Disease</h3>
+
+                <h4><b>Cause</b></h4>
+                <p>Caused by the fungus <b>Magnaporthe oryzae</b>.</p>
+
+                <h4><b>Symptoms</b></h4>
+                <ul>
+                    <li>Diamond-shaped lesions on leaves</li>
+                    <li>Gray or white center with dark border</li>
+                </ul>
+
+                <h4><b>Treatment</b></h4>
+                <ul>
+                    <li>Apply <b>Tricyclazole</b> fungicide</li>
+                    <li>Avoid excess nitrogen fertilizer</li>
+                </ul>
+
+                <h4><b>Prevention</b></h4>
+                <ul>
+                    <li>Use resistant varieties</li>
+                    <li>Maintain proper spacing</li>
+                </ul>
+
+            {% elif disease == "Bacterialblight" %}
+                <h3>🟤 Bacterial Blight</h3>
+
+                <h4><b>Cause</b></h4>
+                <p>Caused by bacteria <b>Xanthomonas oryzae</b>.</p>
+
+                <h4><b>Symptoms</b></h4>
+                <ul>
+                    <li>Yellowing and drying of leaves</li>
+                    <li>Water-soaked lesions</li>
+                </ul>
+
+                <h4><b>Treatment</b></h4>
+                <ul>
+                    <li>Spray <b>Streptocycline</b></li>
+                    <li>Remove infected plants</li>
+                </ul>
+
+            {% elif disease == "normal" %}
+                <h3>🟤 Healthy Crop</h3>
+                <p>
+                    Your paddy crop appears healthy.  
+                    Maintain good irrigation and balanced nutrients.
+                </p>
+
+            {% elif disease == "dead_heart" %}
+                <h3>🟤 Dead Heart Disease</h3>
+
+                <h4><b>Cause</b></h4>
+                <p>
+                    Caused by larvae of the insect <b>Scirpophaga incertulas</b> (yellow stem borer) which bore into the rice stem.
+                </p>
+
+                <h4><b>Symptoms</b></h4>
+                <ul>
+                    <li>Central shoot dries and turns brown</li>
+                    <li>Dead central tiller that can be easily pulled out</li>
+                    <li>No grain formation in affected tillers</li>
+                </ul>
+
+                <h4><b>Treatment / Cure</b></h4>
+                <ul>
+                    <li>Apply insecticides like <b>Chlorantraniliprole</b> or <b>Cartap Hydrochloride</b></li>
+                    <li>Remove and destroy infected tillers</li>
+                </ul>
+
+                <h4><b>Prevention</b></h4>
+                <ul>
+                    <li>Use resistant rice varieties</li>
+                    <li>Maintain field sanitation</li>
+                    <li>Avoid excessive nitrogen fertilizer</li>
+                </ul>
+            {% elif disease == "Rice Hispa" %}
+                <h3>🟤 Rice Hispa Disease</h3>
+
+                <h4><b>Cause</b></h4>
+                <p>
+                    Caused by the insect <b>Dicladispa armigera</b>. Adults scrape leaves and larvae mine inside them.
+                </p>
+
+                <h4><b>Symptoms</b></h4>
+                <ul>
+                    <li>White streaks on leaves</li>
+                    <li>Leaves appear skeletonized</li>
+                    <li>Reduced plant growth</li>
+                </ul>
+
+                <h4><b>Treatment / Cure</b></h4>
+                <ul>
+                    <li>Spray <b>Chlorpyrifos</b> or <b>Quinalphos</b></li>
+                    <li>Remove heavily infected leaves</li>
+                </ul>
+
+                <h4><b>Prevention</b></h4>
+                <ul>
+                    <li>Keep field weed-free</li>
+                    <li>Timely planting and proper spacing</li>
+                    <li>Monitor fields regularly</li>
+                </ul>
+
+            {% elif disease == "Tungro" %}
+                <h3>🟤 Rice Tungro Disease</h3>
+
+                <h4><b>Cause</b></h4>
+                <p>
+                    Caused by <b>Rice Tungro Virus</b>, transmitted by green leafhopper insects.
+                </p>
+
+                <h4><b>Symptoms</b></h4>
+                <ul>
+                    <li>Yellow to orange discoloration of leaves</li>
+                    <li>Stunted plant growth</li>
+                    <li>Reduced number of tillers</li>
+                </ul>
+
+                <h4><b>Treatment / Cure</b></h4>
+                <ul>
+                    <li>Control leafhoppers using <b>Imidacloprid</b></li>
+                    <li>Remove infected plants immediately</li>
+                </ul>
+
+                <h4><b>Prevention</b></h4>
+                <ul>
+                    <li>Use virus-free seedlings</li>
+                    <li>Control insect vectors regularly</li>
+                    <li>Grow resistant rice varieties</li>
+                </ul>
+
+            {% else %}
+                <p>Detailed information is not available for this disease.</p>
+            {% endif %}
+
+        </div>
+
+        <a href="{% url 'disease' %}" class="btn-back">🔄 Try Another Image</a>
+    </div>
+</div>
+
+<style>
+/* Background */
+.result-bg {
+    min-height: 100vh;
+    background: url('/static/images/background.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 20px 60px;
+}
+
+/* Main container */
+.result-card {
+    max-width: 950px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+    text-align: center;
+    color: #e5e7eb;
+    transition: 0.35s ease;
+}
+
+/* Hover border */
+.result-card:hover {
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.8);
+}
+
+/* Image */
+.result-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-bottom: 35px;
+}
+
+/* Disease name */
+.disease-name {
+    color: #991b1b;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+/* Confidence */
+.confidence {
+    font-size: 17px;
+    color: #e5e7eb;
+    margin-bottom: 40px;
+}
+
+/* ===== FIXED ALIGNMENT PART ===== */
+.disease-content {
+    text-align: left;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.disease-content h3 {
+    font-size: 24px;
+    margin-bottom: 18px;
+    color: #e5e7eb;
+}
+
+.disease-content h4 {
+    color: #38bdf8;
+    margin-top: 26px;
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+.disease-content p {
+    color: #e5e7eb;
+}
+
+.disease-content ul {
+    padding-left: 22px;
+    margin-top: 8px;
+}
+
+.disease-content li {
+    margin-bottom: 6px;
+}
+
+/* Back button */
+.btn-back {
+    display: inline-block;
+    margin-top: 45px;
+    padding: 12px 38px;
+    background: #020617;
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.btn-back:hover {
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.8);
+}
+</style>
+
+{% endblock content %}

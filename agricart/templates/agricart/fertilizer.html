@@ -1,0 +1,131 @@
+{% extends 'agricart/layouts/main.html' %}
+{% block content %}
+
+<style>
+body {
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+.cont {
+  margin-bottom: 80px; /* Adds space before footer */
+}
+
+h4 {
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+label {
+  color: #e0e0e0;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form-control::placeholder {
+  color: #ddd;
+}
+
+.btn-small {
+  width: 40%;
+  padding: 8px 0;
+  background-color: #00c6ff;
+  background-image: linear-gradient(45deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  margin-left: 79%;
+}
+
+.btn-small:hover {
+  background-image: linear-gradient(45deg, #0072ff, #00c6ff);
+  transform: translateY(-2px);
+}
+</style>
+
+<div class="cont" style="margin-top:70px;min-height:700px;">
+    <div class="row">
+        <div class="col-12">
+            <h4>Fertilizer</h4>
+            <hr style="border-color: #b8bfc2;">  
+            {% include 'agricart/inc/message.html' %}        
+        </div>   
+    </div>
+
+    
+    <section class="py-4 my-0.1">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                     <form method="POST" action="">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label style="margin-left: 50%;">Nitrogen</label>
+                        <input type="number" name="nitrogen" class="form-control" required min="0" required style="margin-left: 50%;">
+                      </div>
+                      <div class="form-group">
+                        <label style="margin-left: 50%;">Phosphorous</label>
+                        <input type="number" name="phosphorous" class="form-control" required min="5" required style="margin-left: 50%;">
+                      </div>
+                      <div class="form-group">
+                        <label  style="margin-left: 50%;">Potassium</label>
+                        <input type="number" name="potassium" class="form-control" required min="5" required  style="margin-left: 50%;">
+                      </div>
+                      <div class="form-group">
+                        <label style="margin-left: 50%;" for="state"><strong>Select Crop</strong></label>
+                        <select id="state" name="crop" class="form-control mt-2" required style="margin-left: 50%;">
+                            <option value="">-- Choose Crop --</option>
+                            <option value="Rice">Rice</option>
+                            <option value="Maize">Maize</option>
+                            <option value="Chickpea">Chickpea</option>
+                            <option value="Kidneybeans">Kidneybeans</option>
+                            <option value="Pigeonpeas">Pigeonpeas</option>
+                            <option value="Mothbeans">Mothbeans</option>
+                            <option value="Mungbean">Mungbean</option>
+                            <option value="Blackgram">Blackgram</option>
+                            <option value="Lentil">Lentil</option>
+                            <option value="Pomegranate">Pomegranate</option>
+                            <option value="Banana">Banana</option>
+                            <option value="Mango">Mango</option>
+                            <option value="Grapes">Grapes</option>
+                            <option value="Watermelon">Watermelon</option>
+                            <option value="Muskmelon">Muskmelon</option>
+                            <option value="Papaya">Papaya</option>
+                            <option value="Coconut">Coconut</option>
+                            <option value="Cotton">Cotton</option>
+                            <option value="Jute">Jute</option>
+                        </select>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-small mt-3">Predict</button>
+                     </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+ 
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
