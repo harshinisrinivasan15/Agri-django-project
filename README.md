@@ -25,7 +25,7 @@ Uses OpenAI API to explain diseases in simple language Suggest preventive measur
 
 [Custom-built Crop Recommendation Dataset](ml/data/Crop_recommendation.csv)
 
-Custom-built Fertilizer Recommendation Dataset
+[Custom-built Fertilizer Recommendation Dataset](ml/data/fertilizer.csv)
 
 Paddy Disease Image Dataset
 ## 🔐 Security
