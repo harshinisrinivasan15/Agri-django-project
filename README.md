@@ -19,7 +19,7 @@ Uses OpenAI API to explain diseases in simple language Suggest preventive measur
 - Machine Learning: Scikit-learn
 - Deep Learning: TensorFlow / Keras
 - LLM Integration: OpenAI API
-- Database: SQLite
+- Database: MYSQL
 - Version Control: Git & GitHub
 ## 📊 Data Sources
 
