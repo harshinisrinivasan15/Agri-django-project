@@ -64,6 +64,9 @@ python manage.py runserver
 
 Open:
 http://127.0.0.1:8000/
+## ▶️ Demo Video
+
+[Click Here](https://drive.google.com/file/d/17gms73jH-xuLBy0K_--iGgWQXf8iegrT/view?usp=drivesdk) to watch the project demo
 ## 🎯 Motivation
 
 Agriculture plays a major role in economic development, especially in countries like India.
